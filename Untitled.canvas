@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"87a0d21d00814965","x":-525,"y":-370,"width":400,"height":400,"type":"file","file":"2 - Fleeting Notes/Git rm --cached.md"},
+		{"id":"4b476e7dde61172a","x":100,"y":60,"width":250,"height":60,"color":"6","type":"text","text":""}
+	],
+	"edges":[
+		{"id":"47827e2170cc67d6","fromNode":"4b476e7dde61172a","fromSide":"top","toNode":"87a0d21d00814965","toSide":"right","color":"4"}
+	]
+}
