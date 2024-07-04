@@ -10,7 +10,7 @@ git checkout -b [nazwaBrancha]
 git status
 git add .
 git commit -m "opis co robiłam"
-git push origim [nazwaBrancha]
+git push origin [nazwaBrancha]
 ```
 
 Na GitHubie pull request
