@@ -1,6 +1,6 @@
 
 --- 
-tags: [[JS]]
+tags: [[5 - Tags/Methods|Methods]] 
 date: 2024-07-02
 
 ---

@@ -1,5 +1,5 @@
 --- 
-tags: [[JS]] [[Arithmetic Operators]] 
+tags:  [[Arithmetic Operators]] 
 date: 2024-07-04
 
 ---

@@ -1,6 +1,6 @@
 
 --- 
-tags: [[Currying in JavaScript]] 
+tags: [[Currying]] 
 date: 2024-07-08
 
 ---

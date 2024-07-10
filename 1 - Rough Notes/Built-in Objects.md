@@ -1,6 +1,6 @@
 
 --- 
-tags: [[JS]]
+tags:  [[JS Object]]
 date: 2024-07-02
 
 ---
