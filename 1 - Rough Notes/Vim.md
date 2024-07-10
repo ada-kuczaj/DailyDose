@@ -43,6 +43,31 @@ Oprócz podstawowych skrótów poruszania się, istnieje wiele innych przydatnyc
 - `w`: przejście do początku następnego słowa
 - `b`: przejście do początku poprzedniego słowa
 
+- **Kopiowanie (Yank)**:
+	- Aby skopiować (yank) jedną linię, umieść kursor na linii i naciśnij `yy`.
+    - Aby skopiować wiele linii, na przykład 5 linii, naciśnij `5yy`.
+    - Aby skopiować tekst od kursora do końca linii, naciśnij `y$`.
+    - Aby skopiować cały plik, użyj polecenia `ggVGy`.
+- 
+- **Wklejanie (Put)**:    
+    - Aby wkleić (put) skopiowany tekst poniżej kursora, naciśnij `p`.
+    - Aby wkleić skopiowany tekst powyżej kursora, naciśnij `P`.
+- 
+- **Wycinanie (Delete)**:    
+    - Aby wyciąć jedną linię, umieść kursor na linii i naciśnij `dd`.
+    - Aby wyciąć wiele linii, na przykład 3 linie, naciśnij `3dd`.
+    - Aby wyciąć tekst od kursora do końca linii, naciśnij `d$`.
+- 
+- **Operacje na zaznaczonym tekście**:
+	- Aby zaznaczyć tekst, przejdź do trybu wizualnego, naciskając `v` dla trybu wizualnego, `V` dla trybu wizualnego liniowego, lub `Ctrl + v` dla trybu wizualnego blokowego.
+    - Po zaznaczeniu tekstu, naciśnij `y` aby skopiować lub `d` aby wyciąć.
+    - Następnie naciśnij `p` lub `P`, aby wkleić tekst w odpowiednim miejscu.
+- 
+- **Korzystanie z systemowego schowka**:
+    - Aby korzystać ze schowka systemowego, użyj znaków `"` oraz `+` przed poleceniami yank, put, lub delete.
+    - Na przykład, aby skopiować do schowka systemowego, zaznacz tekst w trybie wizualnym (`v`) i naciśnij `"+y`.
+    - Aby wkleić ze schowka systemowego, naciśnij `"+p`.
+
 ### References:
 
 

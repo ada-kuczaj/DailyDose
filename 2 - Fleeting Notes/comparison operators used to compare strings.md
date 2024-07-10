@@ -1,6 +1,6 @@
 
 --- 
-tags: [[JS]]
+tags:  [[JS Operators]]
 date: 2024-07-04
 
 ---

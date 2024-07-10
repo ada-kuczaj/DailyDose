@@ -62,11 +62,40 @@ add_one(10);
 ```
 
 
+## Currying with Arrow Functions
 
+```js
+let curried_add = a => b => a + b;
+```
 
+Rewrite the function `changeColor()` with arrow expression syntax and assign it to the variable `changeColorArrow`.
+
+```js
+function changeColor(color) {
+  return function (obj) {
+    obj.color = color;
+  }
+}
+
+// write your code here
+const changeColorArrow = (color) => (obj) => {
+  obj.color = color;
+};
+```
+
+## Zalety curryingu (rozwijania funkcji):
+
+- **Modularność**: Funkcje można rozbijać na mniejsze, bardziej zarządzalne części.
+- **Reużywalność**: Funkcje curried mogą być łatwo ponownie używane w różnych kontekstach.
+- **Czytelność**: Ułatwia pisanie kodu, który jest bardziej zrozumiały i logiczny.
+- **Testowanie**: Łatwiej testować funkcje w mniejszych kawałkach.
+- **Elastyczność**: Możliwość tworzenia bardziej elastycznych funkcji, które mogą być dostosowywane w czasie wykonywania.
+- **Redukcja powtarzalności**: Zmniejsza powtarzalność kodu, co prowadzi do bardziej zwięzłego kodu.
+- **Pipelining**: Umożliwia łatwe łączenie funkcji w łańcuchy operacji (pipeline).
 
 ### References:
 
+https://www.codecademy.com/courses/learn-javascript-best-practices/articles/javascript-currying
 
 ---
 
