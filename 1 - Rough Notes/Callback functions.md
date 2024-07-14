@@ -31,8 +31,8 @@ applyToSquare(function squarePerimeter(side) {
 ```
 
 
-![[Pasted image 20240712140244.png]]
-![[Pasted image 20240712140402.png]]
+![[callback function 1.png]]
+![[callback function 2.png]]
 ### References:
 https://exercism.org/tracks/javascript/exercises/fruit-picker/edit
 https://www.youtube.com/watch?v=nlKJmAvZoxo
