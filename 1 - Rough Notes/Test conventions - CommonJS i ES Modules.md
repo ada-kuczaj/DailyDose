@@ -1,6 +1,6 @@
 
 --- 
-tags: [[Jest]] [[NodeJS]] [[Testing]] [[JS]]
+tags: [[Jest]] [[NodeJS]] [[Testing]] 
 date: 2024-07-03
 
 ---
