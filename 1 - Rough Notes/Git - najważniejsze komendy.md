@@ -54,6 +54,7 @@ git diff main nazwabrancha - pokazuje różnicę pomiędzy branchami
 ### References:
 
 https://www.atlassian.com/git/glossary#commands
+https://cs.fyi/guide/git-cheatsheet 
 ---
 
 
