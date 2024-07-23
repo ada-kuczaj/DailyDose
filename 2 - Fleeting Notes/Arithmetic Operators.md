@@ -9,7 +9,8 @@ date: 2024-07-02
 2. Subtract: `-`
 3. Multiply: `*`
 4. Divide: `/`
-5. Remainder: `%`
+5. Modulus: `%`
+6. Exponentiation `**`
 
 ### References:
 
