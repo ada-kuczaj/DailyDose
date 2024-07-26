@@ -1,28 +1,19 @@
 
 --- 
 tags: [[JAVASCRIPT_FROM_BEGINNER_TO_PROFESSIONAL]]
-date: 2024-07-23
+date: 2024-07-27
 
 ---
 
-**KLUCZOWE INFORMACJE W ROZDZIALE 3:**
-	 • Arrays and their properties 
-	 • Array methods 
-	 • Multidimensional arrays 
-	 • Objects in JavaScript 
-	 • Working with objects and arrays
-
-
-
-
-
-
-
-
-
-
-
-
+**KLUCZOWE INFORMACJE W ROZDZIALE 6:**
+	• Basic functions 
+	• Function arguments 
+	• Return 
+	• Variable scope in functions 
+	• Recursive functions 
+	• Nested functions 
+	• Anonymous functions 
+	• Function callbacks
 
 
 
