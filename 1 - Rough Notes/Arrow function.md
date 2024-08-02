@@ -105,9 +105,35 @@ a => a + 100;
 
 
 
+
+
+
+```js
+function addUpTwoNumbers(num1, num2) { return num1 + num2; } 
+// function keyword removed and => added 
+const addUpTwoNumbers = (num1, num2) => { return num1 + num2; };
+```
+
+Jeśli treść funkcji zawiera tylko instrukcję return, jak w powyższym przykładzie, można pominąć {} i słowo kluczowe return.
+
+```js
+const addUpTwoNumbers = (num1, num2) => { return num1 + num2 }; 
+// can be shortened to 
+const addUpTwoNumbers = (num1, num2) => num1 + num2; 
+// braces {} and return removed
+```
+
+
+
+
+
+
+
+
 ### References:
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+https://exercism.org/tracks/javascript/concepts/arrow-functions
 
 ---
 

@@ -61,6 +61,7 @@ let arr = [1, 2, 3, 4];
 let sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0); // sum to 10
 ```
 
+![[Pasted image 20240729205134.png]]
 # forEach()
 
 Wykonuje podaną funkcję raz na każdy element tablicy.
