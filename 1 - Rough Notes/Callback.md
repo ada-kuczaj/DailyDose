@@ -26,9 +26,36 @@ fetchData(processData);
 
 W powyższym przykładzie, `fetchData` przyjmuje funkcję `callback` jako argument i wywołuje ją po pobraniu danych, przekazując te dane jako argument do callbacka `processData`.
 
+
+Funkcje zwrotne (callback functions) są funkcjami przekazywanymi jako argumenty. Ten wzorzec programowania tworzy sekwencję wywołań funkcji zarówno w programowaniu synchronicznym, jak i asynchronicznym. Pisanie funkcji zwrotnej nie różni się od pisania zwykłej funkcji; jednak funkcja zwrotna musi pasować do sygnatury zdefiniowanej przez funkcję wywołującą.
+
+```js
+const sideLength = 5;
+
+// Funkcja wywołująca przyjmuje funkcję zwrotną
+function applySideLength(callback) {
+  return callback(sideLength);
+}
+
+// Funkcja zwrotna musi oczekiwać możliwego argumentu od funkcji wywołującej
+function areaOfSquare(side) {
+  return side * side;
+}
+
+applySideLength(areaOfSquare); // => 25
+```
+
+Można również napisać funkcje zwrotne jako wyrażenie funkcyjne:
+
+```js
+applySideLength(function squarePerimeterLength(side) {
+  return side * 4;
+});
+```
+
 ### References:
 
-
+https://exercism.org/tracks/javascript/concepts/callbacks
 ---
 
 
