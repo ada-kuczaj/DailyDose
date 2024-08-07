@@ -405,12 +405,206 @@ console.log(bool_start);
 
 
 
+## Number methods
+### isNaN()
+
+Ta funkcja sprawdza, czy wartość nie jest liczbą i zwraca `true`, jeśli wartość to NaN, a `false` w przeciwnym razie.
+
+```js
+let x = 34;
+console.log(isNaN(x));     // false, ponieważ 34 jest liczbą
+console.log(!isNaN(x));    // true, ponieważ 34 jest liczbą i negowanie false daje true
+
+let str = "hi";
+console.log(isNaN(str));   // true, ponieważ "hi" nie jest liczbą
+let str1 = "5";
+console.log(isNaN(str1));  // false, ponieważ "5" może być konwertowane na liczbę 5
+
+```
+
+### isFinite()
+
+Metoda, która sprawdza, czy coś jest skończone. Zwraca ona `false` dla `NaN`, `Infinity` i `undefined`, a `true` dla wszystkich innych wartości.
+
+```js
+let x = 3;
+let str = "finite";
+console.log(isFinite(x));   //true
+console.log(isFinite(str));   //false
+console.log(isFinite(Infinity));   //false
+console.log(isFinite(10 / 0));   //false
+```
+
+Ciąg znaków nie jest liczbą, a zatem nie jest skończony.
+
+### isInteger()
+
+W przeciwieństwie do `isNaN()` i `isFinite()`, `isInteger()` nie została przekształcona w metodę globalną i musimy odwołać się do obiektu Number, aby jej użyć. Robi dokładnie to, czego można by się spodziewać: zwraca `true`, jeśli wartość jest liczbą całkowitą, i `false`, gdy nie jest.
+
+```js
+let x = 3;
+let str = "integer";
+console.log(Number.isInteger(x));   //true
+console.log(Number.isInteger(str));   //false
+console.log(Number.isInteger(Infinity));   //false
+console.log(Number.isInteger(2.4));   //false
+```
+
+### toFixed()
+
+Określanie liczby miejsc po przecinku. Różni się ona od metod zaokrąglania w klasie `Math`, ponieważ tutaj możemy określić liczbę miejsc po przecinku. Nie zmienia to oryginalnej wartości, więc musimy przechować wynik w innej zmiennej.
+
+```js
+let x = 1.23456;
+let newX = x.toFixed(3);   //1.235
+```
+
+### toPrecision()
+
+Pozwala określić całkowitą liczbę cyfr do rozważenia. Oznacza to, że JavaScript bierze pod uwagę całkowitą liczbę cyfr, wliczając w to te przed kropką.
+
+```js
+let x = 1.23456;
+let newX = x.toPrecision(4);
+console.log(newX);   //1.235
+```
+
+
+
+
+## Math methods
+
+### max(), min()
+
+Znajdowanie najwyższej lub najniższej liczby wśród argumentów.
+
+```js
+let highest = Math.max(2, 56, 12, 1, 233, 4);
+console.log(highest);   //233
+console.log(lowest);   //1
+
+let highestOfWords = Math.max("hi", 3, "bye");
+console.log(highestOfWords);   //NaN
+
+```
+
+### sqrt()
+
+Jest używana do obliczania pierwiastka kwadratowego z danej liczby
+
+```js
+let result = Math.sqrt(64);
+console.log(result);   //8
+```
+
+### pow(base, exponent)
+
+Pozwala podnieść liczbę do określonej potęgi (podstawapotęga, na przykład 2^3).
+
+```js
+let result2 = Math.pow(5, 3);
+console.log(result2);   //5^3, czyli 5*5*5, czyli 125
+```
+
+### round()
+
+Zaokrągla liczbę.
+
+```js
+let x = 6.78;
+let y = 5.34;
+console.log(Math.round(x));   //7
+console.log(Math.round(y));   //5
+```
+
+### ceil(), floor()
+
+Metoda `ceil()` zawsze zaokrągla w górę do pierwszej napotkanej liczby całkowitej. Uwaga na liczby ujemne, ponieważ -5 jest większe niż -6.
+Metoda `floor()` zaokrągla w dół.
+
+```js
+let negativeX = -x;
+let negativeY = -y;
+console.log(Math.ceil(negativeX));   //-6
+console.log(Math.ceil(negativeY));   //-5
+```
+
+### trunc()
+
+Daje ten sam wynik co `floor()` dla liczb dodatnich, ale dochodzi do tych wyników inaczej. Nie zaokrągla w dół, po prostu zwraca tylko część całkowitą. Kiedy używamy liczb ujemnych dla `trunc()`, widzimy różnicę.
 
 
 
 
 
+## Date methods
+### now()
 
+Wbudowana metoda, która zwraca bieżącą datę i czas.
+
+```js
+let now2 = Date.now();
+console.log(now2);   //1622902938507
+```
+
+To wypisze bieżący czas, reprezentowany w milisekundach od 1 stycznia 1970 roku. Jest to arbitralna data reprezentująca epokę Uniksa.
+
+Można także określić konkretną datę za pomocą konstruktora:
+
+```js
+let specificDate = new Date(2022, 1, 10, 12, 10, 15, 100);
+console.log(specificDate);   /2022-02-10T12:10:15.100Z
+```
+
+Uwaga na bardzo ważny szczegół: drugi parametr to miesiąc. `0` oznacza styczeń, a `11` oznacza grudzień.
+
+Za pomocą `get` i `set` możemy pobierać i ustawiać określone części dat.
+
+```js
+let d = new Date();
+console.log("Dzień tygodnia:", d.getDay());
+console.log("Dzień miesiąca:", d.getDate());
+console.log("Miesiąc:", d.getMonth());
+console.log("Rok:", d.getFullYear());
+console.log("Sekundy:", d.getSeconds());
+console.log("Milisekundy:", d.getMilliseconds());
+console.log("Czas:", d.getTime());
+
+let d = new Date();
+d.setFullYear(2010);
+d.setMonth(0); // styczeń
+d.setDate(15);
+d.setHours(10);
+d.setMinutes(30);
+d.setSeconds(45);
+d.setTime(1622889770682);
+```
+
+Jeżeli chodzi o obsługę wartości poza zakresem, to wywołując `setHours()` z liczbą większą niż 24, godziny zostaną przewinięte do następnej daty (1 na każde 24 godziny) i po użyciu operatora modulo, reszta z `hours % 24` będzie nową wartością godzin. Ten sam proces dotyczy minut, sekund i milisekund.
+
+### parse()
+
+Pozwala parsować daty epoki (epoch dates) z ciągów znaków. Dane wejściowe dla `parse` to formaty ISO dat. Wiele formatów może być sparsowanych na ciąg znaków.
+
+```js
+let d1 = Date.parse("June 5, 2021");
+console.log(d1);   //1622851200000
+```
+
+### Konwertowanie daty na ciąg znaków
+
+Możemy również konwertować daty z powrotem na ciągi znaków. Na przykład za pomocą tych metod:
+
+`console.log(d.toDateString());`
+
+Oto kilka innych metod do konwersji daty na ciąg znaków:
+
+- `toDateString()`: Zwraca część daty w czytelnym formacie (bez godziny).
+- `toTimeString()`: Zwraca część czasu w czytelnym formacie.
+- `toISOString()`: Zwraca datę w formacie ISO.
+- `toUTCString()`: Zwraca datę w formacie UTC.
+- `toLocaleDateString()`: Zwraca część daty zgodnie z ustawieniami lokalnymi.
+- `toLocaleTimeString()`: Zwraca część czasu zgodnie z ustawieniami lokalnymi.
 
 
 ### References:
