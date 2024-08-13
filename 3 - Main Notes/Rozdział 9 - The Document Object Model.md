@@ -5,7 +5,7 @@ date: 2024-08-13
 
 ---
 
-**KLUCZOWE INFORMACJE W ROZDZIALE 8:**
+**KLUCZOWE INFORMACJE W ROZDZIALE 9:**
 	 • Podstawowy kurs HTML
 	 • Wprowadzenie do BOM (Browser Object Model)
 	 • Wprowadzenie do DOM (Document Object Model)
