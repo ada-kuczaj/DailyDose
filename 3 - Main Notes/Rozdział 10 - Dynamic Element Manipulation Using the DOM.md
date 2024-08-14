@@ -181,16 +181,183 @@ document.querySelectorAll("div");
 
 ### <span style="color: #00aedb;">Obsługa kliknięcia elementu</span>
 
+Elementy HTML mogą wykonywać określone działania po kliknięciu. Dzieje się tak dlatego, że do elementu HTML można przypisać funkcję JavaScript. Za każdym razem, gdy klikniesz tekst w div, pojawi się wyskakujące okienko z tekstem "Ouch! Stop it!". 
 
-...
+```html
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			function stop() {
+				alert("Ouch! Stop it!");
+			}
+		</script>
+		<div id="one" onclick="stop()">Nie klikaj tutaj!</div>
+	</body>
+</html>
+```
+
+Istnieje również sposób dodania obsługi kliknięcia za pomocą JavaScript. Wybieramy element HTML, do którego chcemy dodać obsługę kliknięcia, i łapiemy go po id. Jeśli chcemy dynamicznie dodać obsługę kliknięcia do elementu div, możemy wybrać go i określić właściwość za pomocą konsoli:
+
+```js
+document.getElementById("one").onclick = function () {
+    alert("Auch! Stop!");
+}
+```
 
 
 
+### <span style="color: #f37735">This i DOM</span>
+
+Słowo kluczowe `this` zawsze ma względne znaczenie; zależy od dokładnego kontekstu, w którym się znajduje. W DOM specjalne słowo kluczowe `this` odnosi się do elementu DOM, do którego należy. Jeśli określimy `onclick`, aby wysłać `this` jako argument, przekaże ono element, w którym znajduje się `onclick`. Możemy uzyskać dostęp do rodzica this za pomocą funkcji w ten sposób:
+
+```js
+function reveal(el) {
+    console.log(el.parentElement);
+}
+```
+
+Możemy w ten sam sposób wyświetlić dowolną inną właściwość elementu; na przykład, `console.log(el.innerText);` Tak więc słowo kluczowe `this` odnosi się do elementu, a z tego elementu możemy przemieszczać się po DOM.
 
 
-### <span style="color: #f37735">Nagłówek kolorowy test</span>
 
-### <span style="color: #ffc425;">Nagłówek kolorowy test</span>
+### <span style="color: #ffc425;">Manipulowanie stylem elementu</span>
+
+Po wybraniu odpowiedniego elementu z DOM możemy zmienić przypisany do niego styl CSS. Możemy to zrobić, używając właściwości `style`. Oto, jak to zrobić:
+
+1. Wybierz odpowiedni element z DOM.
+2. Zmień odpowiednią właściwość wewnątrz właściwości `style` tego elementu.
+
+```js
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			function toggleDisplay(){
+			    let p = document.getElementById("magic");
+			    if(p.style.display === "none") {
+			        p.style.display = "block";
+			    } else {
+			        p.style.display = "none";
+			    }
+			}
+		</script>
+		<p id="magic">Mogę zniknąć i pojawić się.</p>
+		<button onclick="toggleDisplay()">Magia!</button>
+	</body>
+</html>
+```
+
+
+
+### <span style="color: #d11141;">Zmiana klas elementu</span>
+
+Elementy HTML mogą mieć przypisane klasy i możemy wybierać elementy po nazwie klasy. Klasy są często używane do nadawania elementom określonego wyglądu za pomocą CSS. Dzięki JavaScript możemy zmieniać klasy elementów HTML, co może wywołać pewien wygląd związany z daną klasą w CSS. 
+
+#### Dodawanie klas do elementów
+
+```html
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			function disappear(){
+			    document.getElementById("shape").classList.add("hide");
+			}
+		</script>
+		<style>
+			.hide {
+			    display: none;
+			}
+			.square {
+			    height: 100px;
+			    width: 100px;
+			    background-color: yellow;
+			}
+			.square.blue {
+			    background-color: blue;
+			}
+		</style>
+		<div id="shape" class="square blue"></div>
+		<button onclick="disappear()">Zniknij!</button>
+	</body>
+</html>
+```
+
+#### Usuwanie klas z elementów
+
+```js
+function change(){ 
+	document.getElementById("shape").classList.remove("blue"); 
+}
+```
+#### Przełączanie klas
+
+```js
+function changeVisibility(){ 
+	document.getElementById("shape").classList.toggle("hide"); 
+}
+```
+
+
+Możesz się zastanawiać, dlaczego kwadrat był niebieski na początku, skoro miał przypisane dwa layouty dla `background-color` w CSS. Dzieje się tak ze względu na system punktów. Kiedy stylizacja jest bardziej specyficzna, otrzymuje więcej punktów. Więc wskazanie dwóch klas bez spacji między nimi oznacza, że odnosi się do elementów z tymi dwoma klasami. Jest to bardziej specyficzne niż wskazanie jednej klasy. Odwoływanie się do identyfikatora (ID) w CSS, `#nameId`, otrzymuje jeszcze więcej punktów i byłoby priorytetowe nad layoutami opartymi na klasach. Ta warstwowa organizacja pozwala na mniej zduplikowanego kodu, ale może się zrobić bałagan, więc zawsze upewnij się, że dobrze łączysz CSS i HTML, aby uzyskać pożądany layout.
+
+
+
+### <span style="color: #00b159;">Manipulowanie stylem elementu</span>
+### Metoda`setAttribute()`
+
+Istnieje bardziej ogólna metoda, która może być użyta do zmiany dowolnego atrybutu. Atrybutami są `id`, `class` i `href`. Inne powszechne atrybuty to `src` i `style`, ale istnieje wiele innych. Za pomocą metody `setAttribute()` możemy dodawać lub zmieniać atrybuty elementu.
+
+```js
+function changeAttr(){ 
+	let el = document.getElementById("shape"); 
+	el.setAttribute("style", "background-color:red;border:1px solid black"); 
+	el.setAttribute("id", "new"); 
+	el.setAttribute("class", "circle"); 
+}
+```
+
+
+
+### <span style="color: #00aedb;">Nasłuchiwacze zdarzeń na elementach</span>
+
+Zdarzenia to działania, które mają miejsce na stronie internetowej, takie jak kliknięcie czegoś, przesunięcie myszy nad elementem, zmiana elementu i wiele innych. Widzieliśmy już, jak dodać obsługę zdarzenia `onclick`. W ten sam sposób można dodać obsługę zdarzenia `onchange` lub `onmouseover`. Jest jednak jedno szczególne ograniczenie; jeden element może mieć tylko jeden handler zdarzeń jako atrybut HTML. Jeśli więc ma obsługę zdarzenia onclick, nie może mieć również obsługi zdarzenia onmouseover.
+
+
+Sposób rejestrowania obsługi zdarzeń za pomocą JavaScript. Nazywamy to słuchaczami zdarzeń -`event listeners`. Korzystając ze słuchaczy zdarzeń, możemy dodać wiele zdarzeń do jednego elementu. W ten sposób JavaScript ciągle sprawdza, czy na stronie nie występują określone zdarzenia.
+
+Dodanie słuchaczy zdarzeń to proces dwuetapowy:
+
+1. Wybierz element, do którego chcesz dodać zdarzenie.
+2. Użyj składni `addEventListener("event", function)`, aby dodać zdarzenie.
+
+```js
+document.getElementById("square").addEventListener("click", changeColor);
+```
+
+`Event listeners` często są dodawani podczas innych zdarzeń!
+```js
+window.onload = function() {
+    // cokolwiek ma się zdarzyć po załadowaniu
+    // na przykład dodawanie słuchaczy zdarzeń do elementów
+}
+```
+
+Możesz dodawać zdarzenia do wszelkiego rodzaju elementów. Dotychczas używaliśmy tylko zdarzenia `click`, ale istnieje wiele innych, na przykład `focus`, `blur`, `focusin`, `focusout`, `mouseout`, `mouseover`, `keydown`, `keypress` i `keyup`.
+
+
+
+### <span style="color: #f37735">Tworzenie nowych elementów</span>
+
+Możesz dodać nowe elementy do dowolnego elementu w DOM, po prostu wybierając go i używając `appendChild()`.
+
+```js
+let el = document.createElement("p");
+el.innerText = Math.floor(Math.random() * 100);
+document.body.appendChild(el);
+```
+
 
 
 ### References:
