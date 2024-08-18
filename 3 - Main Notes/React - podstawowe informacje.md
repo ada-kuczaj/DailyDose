@@ -1,4 +1,3 @@
-
 --- 
 tags: [[React]]
 date: 2024-08-16
@@ -28,9 +27,6 @@ React jest tylko widokiem w architekturze MVC (Model-View-Controller), ale posia
 React posiada dużą społeczność i jest wspierany przez wielu deweloperów na całym świecie. Znajdziesz mnóstwo materiałów edukacyjnych, bibliotek oraz gotowych rozwiązań.
 #### <span style="color: #f37735">React Native</span>
 React jest także podstawą dla React Native, frameworka pozwalającego na tworzenie aplikacji mobilnych na Androida i iOS przy użyciu tej samej logiki, co w aplikacjach webowych.
-
-
-
 
 ### References:
 

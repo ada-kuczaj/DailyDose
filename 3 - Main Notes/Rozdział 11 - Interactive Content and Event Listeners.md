@@ -1,4 +1,3 @@
-
 --- 
 tags: [[JAVASCRIPT_FROM_BEGINNER_TO_PROFESSIONAL]]
 date: 2024-08-14
@@ -245,7 +244,6 @@ Innym zdarzeniem, które często jest używane z polami wejściowymi, jest `onfo
 
 
 
-
 ### <span style="color: #00aedb;">Obsługa zdarzeń klawiszy</span>
 
 **Najważniejsze Zdarzenia Klawiszy:**
@@ -279,11 +277,149 @@ Zwróć uwagę na jeszcze jedną rzecz: `onpaste="return false"`. Służy to do 
 
 
 
-### <span style="color: #f37735">Nagłówek kolorowy test</span>
+### <span style="color: #f37735"> Przeciąganie i upuszczanie elementów </span>
 
-### <span style="color: #ffc425;">Nagłówek kolorowy test</span>
+Aby oznaczyć element jako coś, co można przeciągać, musimy dodać atrybut `draggable`. Następnie musimy zdecydować, co zrobimy, gdy upuścimy przeciągany element. Musimy to określić w obszarze, do którego można przeciągać element. Dodamy tę funkcjonalność do obu pól (`div`), aby można było przeciągać element z jednego pola do drugiego i z powrotem.
 
-...
+```html
+<div class="box" ondrop="dDrop()" ondragover="nDrop()">
+  1
+  <div id="dragme" ondragstart="dStart()" draggable="true">
+    Przeciągnij mnie!
+  </div>
+</div>
+<div class="box" ondrop="dDrop()" ondragover="nDrop()">2</div>
+```
+
+```js
+  let holderItem;
+
+  function dStart() {
+    holderItem = event.target;
+  }
+
+  function nDrop() {
+    event.preventDefault();
+  }
+
+  function dDrop() {
+    event.preventDefault();
+    if (event.target.className == "box") {
+      event.target.appendChild(holderItem);
+    }
+  }
+```
+
+Zaczynamy od określenia zmiennej w skrypcie dla elementu, który chcemy przytrzymać podczas przeciągania. Gdy zdarzenie `ondragstart` zostanie wywołane, zapisujemy element, który jest przeciągany, w zmiennej `holderItem`.
+
+Normalnie, gdy przeciągasz element, upuszczanie nie jest dozwolone według domyślnych ustawień HTML. Aby umożliwić upuszczenie, musisz zapobiec domyślnemu zdarzeniu, które oznacza, że element, który chcesz upuścić, nie może być upuszczony.
+
+Zazwyczaj, zanim zapobiegniesz domyślnemu zachowaniu, przeprowadzasz pewne sprawdzenia, aby upewnić się, że element, który jest upuszczany, może być zaakceptowany w danym miejscu. W powyższym przykładzie sprawdzamy, czy nazwa klasy elementu, na który jest upuszczany, to `box`. Jeśli tak, dodajemy `holderItem` jako element podrzędny do `box`.
+
+Stworzyliśmy stronę, która umożliwia przenoszenie elementu HTML z jednego pola do drugiego. Jeśli spróbujesz upuścić go gdziekolwiek indziej, element wróci na swoje poprzednie miejsce.
+
+
+
+### <span style="color: #ffc425;">Wysyłanie formularzy</span>
+
+Gdy formularz zostaje wysłany, może zostać wywołane zdarzenie. Można to osiągnąć na różne sposoby, a jednym z nich jest dodanie atrybutu `onsubmit` do elementu formularza.
+
+```html
+<form onsubmit="doSomething()">
+```
+
+Funkcja, która jest tam wymieniona, zostanie wywołana za każdym razem, gdy dane wejściowe typu `submit` zostaną wysłane.
+
+```html
+<input type="submit" value="send">
+```
+
+Możemy zrobić więcej z HTML-em elementu formularza; na przykład możemy przekierować na inną stronę. Musimy określić sposób, w jaki chcemy wysłać wartości formularza, używając atrybutu `method`, oraz stronę docelową, używając atrybutu `action`.
+
+```html
+<form action="anotherpage.html" method="get" onsubmit="doStuff()">
+```
+
+Istnieją inne interesujące rzeczy, które możemy zrobić z `onsubmit` w formularzach. Pamiętasz użycie `return` dla `onkeypress`? Możemy zrobić coś podobnego tutaj! Jeśli wywoływana funkcja zwróci wartość logiczną (Boolean), formularz zostanie wysłany tylko wtedy, gdy wartość ta będzie `true`. Jest to bardzo przydatne, jeśli chcemy przeprowadzić walidację formularza przed jego wysłaniem.
+
+```html
+<!doctype html>
+<html>
+<body>
+  <div id="wrapper"></div>
+  <form action="anotherpage.html" method="get" onsubmit="return valForm()">
+    <input type="text" id="firstName" name="firstName" placeholder="First name" />
+    <input type="text" id="lastName" name="lastName" placeholder="Last name" />
+    <input type="text" id="age" name="age" placeholder="Age" />
+    <input type="submit" value="submit" />
+  </form>
+  <script>
+    function valForm() {
+      var p = event.target.children;
+      if (p.firstName.value == "") {
+        message("Potrzebne jest imię!!");
+        return false;
+      }
+      if (p.lastName.value == "") {
+        message("Potrzebne jest nazwisko!!");
+        return false;
+      }
+      if (p.age.value == "") {
+        message("Potrzebny jest wiek!!");
+        return false;
+      }
+      return true;
+    }
+
+    function message(m) {
+      document.getElementById("wrapper").innerHTML = m;
+    }
+  </script>
+</body>
+</html>
+```
+
+
+
+### <span style="color: #d11141;">Animowanie elementów</span>
+
+Możesz animować elementy, używając HTML, CSS i JavaScript. Pozwala to na tworzenie jeszcze ciekawszych efektów na naszej stronie internetowej. Na przykład możemy wywołać animację jako zdarzenie. Może to być użyte do różnych celów, takich jak zilustrowanie jakiegoś wyjaśnienia, przyciągnięcie uwagi użytkownika do określonego miejsca, czy nawet do stworzenia gry.
+
+Oto bardzo podstawowy przykład. Możemy użyć właściwości `position` i ustawić ją na `absolute` w CSS. To sprawia, że pozycja elementu jest relatywna w stosunku do jego najbliższego pozycjonowanego rodzica, którym w tym przypadku będzie `body`. Poniżej znajduje się kod dla fioletowego kwadratu, który przesuwa się z lewej na prawą stronę, gdy przycisk zostanie kliknięty.
+
+```html
+<!doctype html>
+<html>
+  <style>
+    div {
+      background-color: purple;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+  </style>
+  <body>
+    <button onclick="toTheRight()">Przesuń w prawo</button>
+    <div id="block"></div>
+    <script>
+      function toTheRight() {
+        let b = document.getElementById("block");
+        let x = 0;
+        setInterval(function () {
+          if (x === 600) {
+            clearInterval();
+          } else {
+            x++;
+            b.style.left = x + "px";
+          }
+        }, 2);
+      }
+    </script>
+  </body>
+</html>
+```
+
+Jednocześnie możesz także ustawić inne pozycje, takie jak `style.top`, `style.bottom` i `style.right`, lub dodawać nowe elementy, aby stworzyć efekt padającego śniegu lub pokazać ciągle poruszające się samochody.
 
 
 
