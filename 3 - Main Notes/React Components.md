@@ -45,10 +45,21 @@ Ważne, że w docelowym drzewie DOM są pokazywane jedynie główne komponenty (
 
 ![[Pasted image 20240819230341.png]]
 
+### <span style="color: #ffc425;">Dynamiczne komponenty</span>
+
+Wstawiamy je za pomocą nawiasów wąsów `{odwołanieDoKomponentu}`. Co ważne w nawiasach nie można wstawiać pętli for, if itp., jedynie wyrażenia, które bezpośrednio produkują wartość.
+
+![[Pasted image 20240820151832.png]]
+
+
+### <span style="color: #d11141;">Budowanie reużywalnych komponentów za pomocą "Props"</span>
+
+
+
 
 ### References:
 https://codesandbox.io/p/sandbox/react-essentials-start-gsmr8r?file=%2Fsrc%2Fstyles.css
-
+https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39649010#overview
 ---
 
 
