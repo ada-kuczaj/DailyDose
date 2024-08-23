@@ -37,8 +37,14 @@ date: 2024-08-21
 - **Skalowalność**: Struktura powinna być łatwa do rozszerzenia w miarę rozwoju aplikacji.
 
 
-### References:
+### <span style="color: #00aedb;">Jak rozdzielać komponenty?</span>
 
+Na jak najmniejsze łatwo zarządzalne części, które odpowiadają za jedną rzecz. W głównym pliku jak najmniej kodu.
+
+![[Pasted image 20240823205636.png]]
+
+### References:
+https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39659748#content
 
 ---
 
