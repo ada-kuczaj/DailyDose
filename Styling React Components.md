@@ -99,27 +99,68 @@ w kodzie stylizacji komponentu, znakiem dolara (`$`). Jest to nadal prawidłowa 
 ![[Pasted image 20240901210528.png]]
 ![[Pasted image 20240901210211.png]]
 
+#### Styled Components: Pseudo Selectors, Nested Rules & Media Queries
+
+- **Media Queries (Zapytania o media)**: Pokazuje, jak używać zapytań o media w komponentach stylizowanych, aby dostosować styl do różnych rozmiarów ekranu, urządzeń lub orientacji.
+    
+- **Pseudo-selektory**: Przedstawia sposób pracy z pseudo-selektorami, takimi jak `:hover`, `:focus`, czy `:active`, umożliwiając dodawanie efektów interakcji (np. zmiana koloru po najechaniu na przycisk) w komponentach stylizowanych.
+    
+- **Zagnieżdżone reguły**: Omawia, jak konfigurować zagnieżdżone reguły CSS w komponentach stylizowanych, co pozwala na lepszą organizację kodu i nadawanie stylów elementom potomnym bez potrzeby pisania długich, specyficznych selektorów.
+
+![[Pasted image 20240902224538.png]]
+
+Symbol `&` powie stylizowanym komponentom, że ta reguła powinna wpływać na wszystkie elementy obrazu, które znajdują się wewnątrz tego `header`, a więc są zagnieżdżone wewnątrz tego `header`.
+
+Oto jak łatwo jest skonfigurować stylizowany komponent, który również  stylizuje swoje elementy podrzędne i wykorzystuje funkcje takie jak media Query.
+
+Jak widać, jest to standardowy kod CSS. Nie musieliśmy zmieniać tego kodu i nie trzeba konwertować każdego elementu na komponent stylizowany tylko po to, aby go stylizować. Zamiast tego można po prostu przekonwertować jeden komponent nadrzędny, a następnie dodać do niego style w ten sposób.
+
+
+#### Creating Reusable Components & Component Combinations
+
+![[Pasted image 20240902230246.png]]
+![[Pasted image 20240902230749.png]]
+![[Pasted image 20240902230800.png]]
+Jako programista Reacta powinieneś zawsze szukać takich możliwości, w których możesz albo uzyskać komponenty wielokrotnego użytku, które mają zastosowany określony styling, którego możesz potrzebować w różnych częściach aplikacji, i/lub komponenty, które mogą mieć określone kombinacje elementów JSX (np. label i input), które możesz  potrzebować do ponownego wykorzystania w innych częściach aplikacji.
+
+![[Pasted image 20240902230209.png]]
+
+
+
 #### **5. Styling with Tailwind CSS**
 
+**Tailwind CSS** to kolejne niezwykle popularne rozwiązanie do stylizacji aplikacji  internetowych w ogóle, nie tylko aplikacji React, które jednak okazuje się działać naprawdę dobrze z Reactem. Teraz Tailwind CSS to framework CSS, który może być używany w każdym projekcie internetowym. Jak widać, Tailwind polega na dodawaniu do elementów HTML niewielkich klas CSS, aby stosować style krok po kroku, a tym samym stylizować cały komponent.
+
+![[Pasted image 20240902231712.png]]
+
+![[Pasted image 20240902232100.png]]![[Pasted image 20240902232017.png]]
+
+Integracja Tailwind CSS z komponentami w aplikacji React to popularne podejście, które łączy zalety Tailwind CSS (użycie gotowych klas utility-first) z elastycznością React.
+
+Rozszerzenie/wtyczka:
+![[Pasted image 20240902232536.png]]
+
+![[Pasted image 20240902233430.png]]
+
+![[Pasted image 20240902232947.png]]
+
+Podstawową ideą Tailwind CSS jest dodanie tych niewielkich klas CSS do elementów, aby zmienić ich wygląd, zastosować predefiniowane reguł CSS, które zostały zdefiniowane przez zespół Tailwind w dokumentacji i które są dostępne za pośrednictwem tych klas narzędzi. Można customizować elementy np. czcionkę lub tło strony.
 
 
+![[Pasted image 20240903220337.png]]![[Pasted image 20240903220351.png]]
 
 
-#### **6. Static & Dynamic (Conditional) Styling**
+#### Dynamic & Conditional Styling with Tailwind
 
+![[Pasted image 20240903222311.png]]
 
-
-
-
-### <span style="color: #00aedb;">Nagłówek kolorowy test</span>
-### <span style="color: #f37735">Nagłówek kolorowy test</span>
-
-### <span style="color: #ffc425;">Nagłówek kolorowy test</span>
+![[Pasted image 20240903222937.png]]
 
 
 ### References:
 https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39835916#overview
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
+https://tailwindcss.com/docs/guides/vite
 ---
 
 
